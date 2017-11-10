@@ -72,7 +72,7 @@ class Account
      */
     public function setBalance($balance)
     {
-        $this->date = $date;
+        $this->balance = $balance;
     }
 
     /**
