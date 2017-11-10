@@ -23,8 +23,10 @@
 
         <!-- header of page -->
         <header>
-          <nav>
+        
+            <nav class="navbar navbar-light bg-faded">
+              <a class="navbar-brand" href="#">BANK ACCOUNT MANAGER</a>
+            </nav>
 
-          </nav>
         </header>
         <!-- header of page -->
