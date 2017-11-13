@@ -14,7 +14,13 @@ class AccountManager  {
 
       function addAccount($account)
       {
-
+        $db = $this->getDb(),
+        $q = $db->prepare("INSERT INTO Compte_client (name, firstname,balance) VALUES(:name, :firstname , :balance)");
+        $q->execute([
+          ":name"=> $account->getName(),
+          ":firstname"=> $account->getFirstname(),
+          ":balance"=> $account->getBalance()
+        ]);
 
           return "account Added";
       }

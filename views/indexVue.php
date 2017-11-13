@@ -4,14 +4,14 @@
 
   <button class="btn btn-success" id="addAccount">Add Account</button>
 
- <form action="account.php" method="post" id="formAddAccount" class="form-group" style="display:none">
+ <form action="index.php" method="post" id="formAddAccount" class="form-group" style="display:hidden">
 
 <input name="name" type="text" value="" placeholder="name account" class="form-control" /> <br/>
 <input name="firstname" type="text" value="" placeholder="firstname account" class="form-control" /> <br/>
-<input name="balance" type="text" value="" placeholder="€" class="form-control" /> <br/>
+<input name="balance" type="text" value="" placeholder="balance €" class="form-control" /> <br/>
 
 
-<input type="submit" value="Submit" class="btn btn-primary" >
+<input type="submit" value="Create" class="btn btn-primary" >
  </form>
  <table class="table">
 <thead>
