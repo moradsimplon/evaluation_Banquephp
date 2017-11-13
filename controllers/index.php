@@ -15,15 +15,13 @@ spl_autoload_register('chargerClasse'); // On enregistre la fonction en autoload
 $manager = new AccountManager($bdd);
 
 $accounts = $manager->getAccounts();
-
+if (isset($_POST['name']) && isset($_POST['firstname']) && isset($_POST['balance'])){
 if(isset($_POST['Submit'])){
 $account = new Account($_POST);
 $manager->addAccount($account);
 header('Location: index.php');
 
 }
-
-
+}
 
 include "../views/indexVue.php";
- ?>

@@ -3,14 +3,6 @@
 class AccountManager  {
 
 
-      //  private $db; // Instance de PDO.
-
-
-      // public function __construct($db)
-      // {
-      //     $this->setDb($db);
-      // }
-
 
       function addAccount(Account $account)
       {
@@ -33,7 +25,8 @@ class AccountManager  {
         $q = $this->getDb()->prepare('SELECT * FROM Compte_client WHERE id = :id');
         $q->execute(Array('id'=> $id));
         $account = $q->fetch();
-        $account=new Account($account);
+
+        // $account=new Account($account);
 
         return $account;
       }
