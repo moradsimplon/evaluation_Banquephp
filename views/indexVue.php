@@ -11,7 +11,7 @@
 <input name="balance" type="text" value="" placeholder="balance €" class="form-control" /> <br/>
 
 
-<input type="submit" value="Create" class="btn btn-primary" >
+<input type="submit" name="Submit" value="Create" class="btn btn-primary" >
  </form>
  <table class="table">
 <thead>

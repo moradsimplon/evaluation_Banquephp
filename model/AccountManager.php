@@ -3,23 +3,23 @@
 class AccountManager  {
 
 
-      private $db; // Instance de PDO.
+      //  private $db; // Instance de PDO.
 
 
-      public function __construct($db)
+      // public function __construct($db)
+      // {
+      //     $this->setDb($db);
+      // }
+
+
+      function addAccount(Account $account)
       {
-          $this->setDb($db);
-      }
-
-
-      function addAccount($account)
-      {
-        $db = $this->getDb(),
-        $q = $db->prepare("INSERT INTO Compte_client (name, firstname,balance) VALUES(:name, :firstname , :balance)");
+        $db = $this->getDb();
+        $q = $db->prepare("INSERT INTO Compte_client SET name = ?, firstname = ? , balance = ?");
         $q->execute([
-          ":name"=> $account->getName(),
-          ":firstname"=> $account->getFirstname(),
-          ":balance"=> $account->getBalance()
+           $account->getName(),
+           $account->getFirstname(),
+           $account->getBalance()
         ]);
 
           return "account Added";
@@ -30,7 +30,7 @@ class AccountManager  {
       function getAccount($id)
       {
 
-        $q = $this->db->prepare('SELECT * FROM Compte_client WHERE id = :id');
+        $q = $this->getDb()->prepare('SELECT * FROM Compte_client WHERE id = :id');
         $q->execute(Array('id'=> $id));
         $account = $q->fetch();
         $account=new Account($account);
@@ -47,7 +47,7 @@ class AccountManager  {
        */
       function getAccounts()
       {
-        $res = $this->db->query('SELECT * FROM Compte_client');
+        $res = $this->getDb()->query('SELECT * FROM Compte_client');
 
          $accounts = $res->fetchAll();
 
@@ -81,7 +81,11 @@ class AccountManager  {
        */
       public function getDb()
       {
-          return $this->db;
+        $bdd = new PDO('mysql:host=localhost;dbname=evaluation;charset=utf8', 'root', 'zekri59100');
+               $bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+               $this->db = $bdd;
+               return $bdd;
+                     // return $this->db;
       }
 
       /**
