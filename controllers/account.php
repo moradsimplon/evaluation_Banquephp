@@ -38,11 +38,15 @@ $accountSupp = new Account ($accountSupp);
 if(isset($_POST['addcash'])){
 
 $post = (int) $_POST['sum'];
-
 $account->addBalance($post);
 $manager->updateAccount($account);
  }
+ if(isset($_POST['lowcash'])){
 
+ $post = (int) $_POST['lowsum'];
+ $account->lowBalance($post);
+ $manager->updateAccount($account);
+  }
 
 
   require '../views/accountView.php';

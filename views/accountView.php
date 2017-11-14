@@ -42,6 +42,12 @@
       <input type="number" name="sum" value="">
       <input type="submit" name="addcash" value="ajouter">
     </form>
+    <form class="form-group" action="account.php?id=<?php echo $account->getId();?>" method="post">
+      <input name="id" type="hidden" value="<?= $account->getId();?>"/>
+      <input type="number" name="lowsum" value="">
+      <input type="submit" name="lowcash" value="retrait">
+    </form>
+
 
     </section>
     <!--main pdate -->
