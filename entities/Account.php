@@ -90,6 +90,14 @@ class Account
     {
         $this->id = $id;
     }
+public function addBalance($balance){
+
+  $this->balance += $balance ;
+}
+
+public function lowBalance($balance){
+  $this->balance -= $balance ;
+}
 
 }
  ?>

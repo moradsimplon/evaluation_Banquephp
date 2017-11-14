@@ -9,28 +9,40 @@ function chargerClasse($classe)
 
 }
 
-spl_autoload_register('chargerClasse'); 
+spl_autoload_register('chargerClasse');
 require '../model/AccountManager.php';
 
 
 $manager = new AccountManager($bdd);
 
-
-
-
-  if (isset($_POST['delete'])) {
-    $account = $manager->getAccount($_POST['delete']);
-    $manager->deleteAccount($account);
-    header("Location: index.php");
-}
-
-
-if (isset($_GET['id'])) {
-
-    //utilisation du model et recupere account
+if(isset($_GET['id'])){
 $account= $manager->getAccount($_GET['id']);
 $account = new Account($account);
+}
+if (empty($_GET['id'])) {
 
-    //affichage de la vue
-    require '../views/accountView.php';
-} else echo 'veuillez selectionner un compte';
+  echo 'veuillez selectionner un compte';
+}
+
+$obj_balance = (int) $account->getBalance();
+$account->setBalance($obj_balance);
+
+if (isset($_POST['delete'])) {
+$accountSupp = $manager->getAccount($_POST['delete']);
+
+$accountSupp = new Account ($accountSupp);
+  $manager->deleteAccount($accountSupp);
+  header("Location: index.php");
+}
+
+if(isset($_POST['addcash'])){
+
+$post = (int) $_POST['sum'];
+
+$account->addBalance($post);
+$manager->updateAccount($account);
+ }
+
+
+
+  require '../views/accountView.php';

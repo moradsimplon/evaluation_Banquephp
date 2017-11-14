@@ -59,14 +59,20 @@ class AccountManager  {
        *
        * @param {int} id.
        */
-      function deleteAccount($account)
+      function deleteAccount(Account $account)
       {
+        $db = $this->getDb()->prepare("DELETE FROM Compte_client WHERE id = ?");
+        $db->execute([$account->getId()]);
 
       }
 
       function updateAccount($account)
       {
-          ;
+          $q = $this->getDb()->prepare("UPDATE Compte_client SET  balance = :balance WHERE id =:id");
+
+
+            $q->execute(['id'=>$account->getId(),
+                          'balance'=>$account->getBalance()]);
       }
 
       /**

@@ -15,10 +15,7 @@
 	</thead>
 
 	<tbody>
-<?php
 
-var_dump($account);
- ?>
 	  <tr>
 
 	    <td>
@@ -34,13 +31,18 @@ var_dump($account);
 	      <a href="account.php?id=<?= $account->getId();?>" class="" title=""><?= $account->getBalance(); ?></a>
 	    </td>
 
-	    <td><button class="btn btn-primary" id="edit">Editer</button></td>
+	    <td><button class="btn btn-danger" id="supprimer">Supprimer</button></td>
 	  </tr>
 
 	</tbody>
       </table>
 
-      
+    <form class="form-group" action="account.php?id=<?php echo $account->getId();?>" method="post">
+      <input name="id" type="hidden" value="<?= $account->getId();?>"/>
+      <input type="number" name="sum" value="">
+      <input type="submit" name="addcash" value="ajouter">
+    </form>
+
     </section>
     <!--main pdate -->
 
