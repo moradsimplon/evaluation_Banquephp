@@ -1,11 +1,14 @@
 <!doctype html>
 <?php
   include 'template/header.php';
-include '../model/Autoloader.php';
+// include 'model/Autoloader.php';
   $accounts = $manager->getAccounts();
 ?>
     <!--main page -->
     <section class="container">
+
+      <!-- ***********account selected*********************  -->
+
       <table class="table">
 	<thead>
           <tr>
@@ -39,34 +42,44 @@ include '../model/Autoloader.php';
 	</tbody>
       </table>
 
+<!--****************** form for add money in account selected  **************-->
+
     <form class="form-group" action="account.php?id=<?php echo $account->getId();?>" method="post">
       <input name="id" type="hidden" value="<?= $account->getId();?>"/>
       <input type="number" min='0' name="sum" value="">
       <input type="submit" class='btn btn-primary' name="addcash" value="ajouter">
     </form>
+
+    <!--*************** form for remove money in account selected  *************-->
+
     <form class="form-group" action="account.php?id=<?php echo $account->getId();?>" method="post">
       <input name="id" type="hidden" value="<?= $account->getId();?>"/>
       <input type="number" min='0' name="lowsum" value="">
       <input type="submit" class"btn btn-danger" name="lowcash" value="retrait">
     </form>
-    <div class="form-group">
+
+    <!--************** form for transfer money from account to account  *******************-->
+
+    <form class="form-group" action="account.php?id=<?php echo $account->getId();?>" method="post">
     <label for="exampleSelect1">Compte</label>
-  <table>
-    <th>  <?php
+    <select class="" name="Client">
+
+      <?php
       foreach ($accounts as $key => $value)
       {
-      ?>
+        ?>
 
         <option><?php echo  $value->getId();?></option>
 
 
-
         <?php
-        }
+      }
 
-        ?></th>
-  </table>
-  </div>
+      ?>
+    </select>
+    <input type="number" min='0' name="sumTransfer" value="value in €">
+    <input type="submit" name="transfer" value="transfer">
+  </form>
 
 
     </section>
