@@ -1,7 +1,9 @@
 <!doctype html>
 <?php
-  include("template/header.php")
- ?>
+  include 'template/header.php';
+include '../model/Autoloader.php';
+  $accounts = $manager->getAccounts();
+?>
     <!--main page -->
     <section class="container">
       <table class="table">
@@ -39,14 +41,32 @@
 
     <form class="form-group" action="account.php?id=<?php echo $account->getId();?>" method="post">
       <input name="id" type="hidden" value="<?= $account->getId();?>"/>
-      <input type="number" name="sum" value="">
-      <input type="submit" name="addcash" value="ajouter">
+      <input type="number" min='0' name="sum" value="">
+      <input type="submit" class='btn btn-primary' name="addcash" value="ajouter">
     </form>
     <form class="form-group" action="account.php?id=<?php echo $account->getId();?>" method="post">
       <input name="id" type="hidden" value="<?= $account->getId();?>"/>
-      <input type="number" name="lowsum" value="">
-      <input type="submit" name="lowcash" value="retrait">
+      <input type="number" min='0' name="lowsum" value="">
+      <input type="submit" class"btn btn-danger" name="lowcash" value="retrait">
     </form>
+    <div class="form-group">
+    <label for="exampleSelect1">Compte</label>
+  <table>
+    <th>  <?php
+      foreach ($accounts as $key => $value)
+      {
+      ?>
+
+        <option><?php echo  $value->getId();?></option>
+
+
+
+        <?php
+        }
+
+        ?></th>
+  </table>
+  </div>
 
 
     </section>

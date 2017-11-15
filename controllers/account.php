@@ -35,17 +35,24 @@ $accountSupp = new Account ($accountSupp);
   header("Location: index.php");
 }
 
-if(isset($_POST['addcash'])){
-
+if(isset($_POST['addcash']) ){
+if($_POST['sum']>0){
 $post = (int) $_POST['sum'];
 $account->addBalance($post);
 $manager->updateAccount($account);
  }
- if(isset($_POST['lowcash'])){
+ else echo ' ajouter une valeur positive';
+  }
+
+
+ if(isset($_POST['lowcash'])  ){
+   if($_POST['lowsum']>0){
 
  $post = (int) $_POST['lowsum'];
  $account->lowBalance($post);
  $manager->updateAccount($account);
+ }
+ else echo ' ajouter une valeur positive';
   }
 
 
