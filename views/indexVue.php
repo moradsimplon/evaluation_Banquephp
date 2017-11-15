@@ -2,10 +2,12 @@
   include("template/header.php")
  ?>
 
-  <button class="btn btn-success" id="addAccount">Add Account</button>
+<div class="card col-md-3">
 
- <form action="index.php" method="post" id="formAddAccount" class="form-group" style="display:hidden">
 
+<label for="">Create Your Account</label>
+ <form action="index.php" method="post" id="formAddAccount" class="form-group" style="display:hidden" >
+<div class="card-block">
 <input name="name" type="text" value="" placeholder="name account" class="form-control" /> <br/>
 <input name="firstname" type="text" value="" placeholder="firstname account" class="form-control" /> <br/>
 <input name="balance" type="text" value="" placeholder="balance €" class="form-control" /> <br/>
@@ -13,6 +15,9 @@
 
 <input type="submit" name="Submit" value="Create" class="btn btn-primary" >
  </form>
+</div>
+</div>
+
  <table class="table">
 <thead>
      <tr>
