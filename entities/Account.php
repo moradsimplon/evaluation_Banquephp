@@ -2,10 +2,10 @@
 
 class Account
 {
-    private $id;
+    private  $id;
     private $name;
     private $firstname;
-    private $balance;
+    private  $balance;
 
 
     public function __construct($donnees)
@@ -72,7 +72,7 @@ class Account
      */
     public function setBalance($balance)
     {
-        $this->balance = $balance;
+        $this->balance = (int) $balance;
     }
 
     /**
@@ -88,16 +88,22 @@ class Account
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->id = (int) $id;
     }
 public function addBalance($balance){
 
-  $this->balance += $balance ;
+  $this->balance += (int) $balance ;
 }
 
 public function lowBalance($balance){
-  $this->balance -= $balance ;
+  $this->balance -= (int) $balance ;
 }
 
+   public function Transfer($transfer, $account)
+   {
+       $this->lowBalance($transfer);
+       $account->addBalance($transfer);
+   }
 }
+
  ?>

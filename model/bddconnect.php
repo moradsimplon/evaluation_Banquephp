@@ -1,5 +1,9 @@
 <?php
 
+
+// connect in database
+
+
 try {
     $bdd = new PDO('mysql:host=localhost;dbname=evaluation;charset=utf8', 'root', 'zekri59100');
 }
